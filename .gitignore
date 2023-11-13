@@ -1,0 +1,27 @@
+# Ignore vendor directory
+/vendor
+
+# Ignore composer.lock file
+/composer.lock
+
+# Ignore .env file
+/.env
+
+# Ignore .DS_Store files on macOS
+.DS_Store
+
+# Ignore log files
+/log/*.log
+
+# Ignore cache files
+/cache/*
+
+# Ignore session files
+/sessions/*
+
+# Ignore compiled files
+*.class
+*.o
+*.so
+*.pyc
+*.exe
