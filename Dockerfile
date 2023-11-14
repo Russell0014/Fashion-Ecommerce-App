@@ -4,17 +4,15 @@ FROM php:7.4-apache
 RUN apt-get update && \
     apt-get install -y \
     mariadb-client \
-    libmariadbclient-dev \
-    php-mysql \
+    libmariadb-dev \
     git
+
+# install pdo_mysql
+RUN docker-php-ext-install pdo_mysql
 
 # Set up Apache
 WORKDIR /var/www/html
-COPY . .
-
-# Set up PHP extensions and configurations as needed
+RUN a2enmod rewrite
 
 # Expose port
 EXPOSE 80
-
-CMD ["apache2-foreground"]
