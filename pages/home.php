@@ -86,7 +86,7 @@ if (isset($_POST['submitForm'])) {
             <div class="row">
                 <div class="col-md-4">
                     <div class="product-demo">
-                        <a href="shopOpen.php?id=1">
+                        <a href="shopOpen?id=1">
                             <img src="../assets/images/TeeShirt-1.png" class="product-img" alt="TeeShirt 1">
                         </a>
                         <div class="product-body">
@@ -97,7 +97,7 @@ if (isset($_POST['submitForm'])) {
                 </div>
                 <div class="col-md-4">
                     <div class="product-demo">
-                        <a href="shopOpen.php?id=2">
+                        <a href="shopOpen?id=2">
                             <img src="../assets/images/TeeShirt-2.png" class="product-img" alt="TeeShirt 2">
                         </a>
                         <div class="product-body">
@@ -108,7 +108,7 @@ if (isset($_POST['submitForm'])) {
                 </div>
                 <div class="col-md-4">
                     <div class="product-demo">
-                        <a href="shopOpen.php?id=3">
+                        <a href="shopOpen?id=3">
                             <img src="../assets/images/TeeShirt-3.png" class="product-img" alt="TeeShirt 3">
                         </a>
                         <div class="product-body">
@@ -122,7 +122,7 @@ if (isset($_POST['submitForm'])) {
 
 
         <div class="featured-button">
-            <a href="shop.php" class="view-all-btn ">View All</a>
+            <a href="shop" class="view-all-btn ">View All</a>
         </div>
 
 
@@ -215,32 +215,7 @@ if (isset($_POST['submitForm'])) {
 
 
             <!-- Footer section -->
-            <div class="footer">
-                <div class="footer-left">
-                    <p><strong>Deluxe Society</strong></p>
-                    <p><a href="home.php">Home</a>
-                    <p><a href="shop.php">Shop</a>
-                    <p><a href="thread.php">Discussion</a>
-                    <p><a href="aboutUs.php">About Us</a></p>
-                </div>
-
-                <div class="footer-center">
-                    <p><strong>Shopping</strong></p>
-                    <p><a href="shop.php">Products</a>
-                    <p><a href="shop.php">T-shirts</a></p>
-                    <p><a href="aboutUs.php">Customer Service</a>
-                    <p><a href="shop.php">Exclusive items</a>
-                    <p><br>© 2023 Deluxe Society</p>
-                </div>
-
-                <div class="footer-right">
-                    <p><strong>My Account</strong></p>
-                    <p><a href="login.php">Login/Sign in</a></p>
-                    <p><a href="cart.php">My cart</a></p>
-                    <p><a href="profile.php">View/Update Details</a></p>
-                    <p><a href="profile.php">Change Theme</a></p>
-                </div>
-            </div>
+            <?= templateFooter() ?>
 
             <!-- Cookie Consent Banner -->
             <div id="cookieConsent" class="alert alert-dark alert-info alert-dismissible fade show px-auto" role="alert" style="position: fixed; bottom: 0; left: 0; right: 0; text-align: center; z-index: 9999; margin-bottom: 0; background-color:#071220; color:white; border: 0px; border-radius:0px; padding-right: 10px; padding-left:10px;">

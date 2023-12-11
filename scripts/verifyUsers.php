@@ -17,14 +17,14 @@ function verify() {
     if ($currentUsername && isset($_COOKIE['UID'])) {
         if ($_COOKIE['UID'] === $expectedCookieValue) {
             echo 'User is authenticated.';
-            header("Location: home.php");
+            header("Location: /");
         } else {
             echo 'User is not authenticated.';
-            header("Location: login.php");
+            header("Location: login");
         }
     } else {
         echo 'User is not authenticated.';
-        header("Location: login.php");
+        header("Location: login");
     }
 }
 
@@ -37,7 +37,7 @@ function logout() {
             setcookie('UID', '', time() - 3600, '/'); 
         }
 
-        header("Location: login.php");
+        header("Location: login");
         exit();
 }
 
@@ -45,7 +45,7 @@ function getUsername() {
     if (isset($_SESSION['username'])) {
         return $_SESSION['username'];
     } else {
-        header("Location: login.php");
+        header("Location: login");
         exit();
     }
 }

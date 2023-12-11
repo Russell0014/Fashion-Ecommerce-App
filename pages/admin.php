@@ -505,32 +505,7 @@ $conn = null;
 
 
         <!-- Footer section -->
-        <div class="footer">
-            <div class="footer-left">
-                <p><strong>Deluxe Society</strong></p>
-                <p><a href="home.php">Home</a>
-                <p><a href="shop.php">Shop</a>
-                <p><a href="thread.php">Discussion</a>
-                <p><a href="aboutUs.php">About Us</a></p>
-            </div>
-
-            <div class="footer-center">
-                <p><strong>Shopping</strong></p>
-                <p><a href="shop.php">Products</a>
-                <p><a href="shop.php">T-shirts</a></p>
-                <p><a href="aboutUs.php">Customer Service</a>
-                <p><a href="shop.php">Exclusive items</a>
-                <p><br>© 2023 Deluxe Society</p>
-            </div>
-
-            <div class="footer-right">
-                <p><strong>My Account</strong></p>
-                <p><a href="login.php">Login/Sign in</a></p>
-                <p><a href="cart.php">My cart</a></p>
-                <p><a href="profile.php">View/Update Details</a></p>
-                <p><a href="profile.php">Change Theme</a></p>
-            </div>
-        </div>
+        <?= templateFooter() ?>
 
 
 
