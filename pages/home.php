@@ -70,7 +70,7 @@ if (isset($_POST['submitForm'])) {
                             styles, from trendsetting designs to<br>
                             timeless classics. We're your<br>
                             exclusive fashion destination.<br><br>
-                            <a href="shop.php"><button class="explorenow-btn">Explore Now</button></a>
+                            <a href="shop"><button class="explorenow-btn">Explore Now</button></a>
                         </p>
                     </div>
                 </div>

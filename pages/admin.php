@@ -10,7 +10,7 @@ $currentUsername = hash('sha256', $uName . $customSalt);
 
 if ($currentUsername && isset($_COOKIE['UID'])) {
     if ($_COOKIE['UID'] !== $currentUsername) {
-        header("Location: home.php");
+        header("Location: /");
         exit();
     }
 }
@@ -28,7 +28,7 @@ try {
     $uStatus = $result['isAdmin'];
 
     if ($uStatus == 0) {
-        header("Location: home.php");
+        header("Location: /");
     }
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -256,7 +256,7 @@ $conn = null;
                 <td>$threadDesc</td>
                 <td>$isArchive</td>
                 <td>
-                    <form method='post' name='updateThread' action='admin.php'>
+                    <form method='post' name='updateThread' action='admin'>
                         <input type='hidden' name='threadID' value='$threadID'>
                         <input type='submit' name='updateThread' value='$archiveAction' class='btn btn-primary archive-btn'>
                     </form>
@@ -299,7 +299,7 @@ $conn = null;
                             <td><?= $userID ?></td>
                             <td><?= $archiveInfo ?></td>
                             <td>
-                                <form method="post" action="admin.php">
+                                <form method="post" action="admin">
                                     <input type="hidden" name="commentID" value="<?= $commentID ?>">
                                     <input type="hidden" name="isArchive" value="<?= $isArchive ?>">
                                     <input type="submit" name="archiveComment" value="<?= $archiveAction ?>" class="btn btn-primary archive-btn">
@@ -349,7 +349,7 @@ $conn = null;
                             <td><?= $userEmail ?></td>
                             <td><?= $isAdmin ?></td>
                             <td>
-                                <form method="post" action="admin.php">
+                                <form method="post" action="admin">
                                     <input type="hidden" name="userID" value="<?= $userID ?>">
                                     <button type="submit" name="updateAdmin" class="btn btn-primary">
                                         Make/Remove Admin
@@ -358,7 +358,7 @@ $conn = null;
                             </td>
                             <td><?= $isUserArchive ? 'Locked' : 'Unlocked' ?></td>
                             <td>
-                                <form method="post" action="admin.php">
+                                <form method="post" action="admin">
                                     <input type="hidden" name="userID" value="<?= $userID ?>">
                                     <input type="hidden" name="isUserArchive" value="<?= $isUserArchive ?>">
                                     <button type="submit" name="toggleAccountStatus" class="btn btn-danger">
@@ -422,7 +422,7 @@ $conn = null;
                                                 <p>Are you sure you want to delete this product?</p>
                                                 <p>Deleting this product will remove it from the database and cannot be undone.</p>
 
-                                                <form method="post" action="admin.php">
+                                                <form method="post" action="admin">
                                                     <input type="hidden" name="productID" value="<?= $productID ?>">
                                                     <button type="submit" name="deleteProduct" class="btn btn-danger">
                                                         Delete Product
@@ -444,7 +444,7 @@ $conn = null;
 
         <div class="container mt-4" style="display: none;" id="product-section">
             <h2>Add a New Product</h2>
-            <form action="admin.php" method="post" enctype="multipart/form-data">
+            <form action="admin" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="productImage" class="form-label">Product Image:</label>
                     <input type="file" class="form-control" name="productImage" id="productImage" required>
@@ -480,8 +480,8 @@ $conn = null;
                 <thead>
                     <tr>
                         <th>Question</th>
-                        <th>Asker's Name</th>
-                        <th>Asker's Email</th>
+                        <th>Name</th>
+                        <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>

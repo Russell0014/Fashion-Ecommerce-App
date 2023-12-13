@@ -47,7 +47,7 @@ if (isset($_POST['delete'])) {
     $stmt = $conn->prepare($query);
     $stmt->execute();
 
-    header('Location: thread.php');
+    header('Location: thread');
     exit;
 }
 
@@ -63,7 +63,7 @@ if (isset($_POST['ok'])) {
 
     if ($currentUsername && isset($_COOKIE['UID'])) {
         if ($_COOKIE['UID'] !== $currentUsername) {
-            header("Location: login.php");
+            header("Location: login");
             exit();
         }
     }
@@ -150,7 +150,7 @@ if (isset($_POST['ok'])) {
                     <div class="icons text-center align-self-center">
 
                         <?php
-                        $currentUserName = getCurrentUserID();
+                        $currentUserName = getCurrentUserID($conn);
                         $postUserID = getPostUserID($conn, $row['threadID']);
                         ?>
 

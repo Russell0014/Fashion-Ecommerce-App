@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     addProductToCart($selectedID, $selectedSize, $selectedQuantity, $conn);
 
     // Redirect to a different page to avoid form resubmission on refresh
-    header("Location: cart.php");
+    header("Location: cart");
     exit();
 }
 
@@ -148,10 +148,10 @@ function addProductToCart($id, $selectedSize, $selectedQuantity, $conn)
                     </div>
                     <div class="row mt-4 d-flex align items-center">
                         <div class="col-sm-6 order-md-2 text-end">
-                            <a href="checkout.php" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 mx-3">Checkout</a>
+                            <a href="checkout" class="btn btn-primary mb-4 btn-lg pl-5 pr-5 mx-3">Checkout</a>
                         </div>
                         <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                            <a href="shop.php" style="text-decoration: none;">
+                            <a href="shop" style="text-decoration: none;">
                                 <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
                             </a>
                         </div>
@@ -166,7 +166,7 @@ function addProductToCart($id, $selectedSize, $selectedQuantity, $conn)
                     <div class="offset-lg-3 col-lg-6 col-md-12 col-12 text-center">
                         <img src="../assets/images/AdobeStock_623046799.jpeg" alt="" class="img-fluid mb-4">
                         <h2>Your shopping cart is currently empty</h2>
-                        <a href="shop.php" class="btn btn-primary my-2">Explore Products</a>
+                        <a href="shop" class="btn btn-primary my-2">Explore Products</a>
                     </div>
                 </div>
             </div>

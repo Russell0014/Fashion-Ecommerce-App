@@ -53,7 +53,7 @@ try {
 
         if ($currentUsername && isset($_COOKIE['UID'])) {
             if ($_COOKIE['UID'] !== $currentUsername) {
-                header("Location: login.php");
+                header("Location: login");
                 exit();
             }
         }
@@ -193,7 +193,7 @@ if (isset($_POST['postLike'])) {
 
     if ($currentUsername && isset($_COOKIE['UID'])) {
         if ($_COOKIE['UID'] !== $currentUsername) {
-            header("Location: login.php");
+            header("Location: login");
             exit();
         }
     }
@@ -378,7 +378,7 @@ if (isset($_POST['postLike'])) {
                                     </form>
 
                                     <?php
-                                    $currentUserName = getCurrentUserID();
+                                    $currentUserName = getCurrentUserID($conn);
                                     $postUserID = getPostUserID($conn, $row['threadID']);
                                     ?>
 

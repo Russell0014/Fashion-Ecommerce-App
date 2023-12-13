@@ -22,4 +22,4 @@ if (isset($_POST['productIndex'])) {
 }
 
 // Redirect back to the shopping cart page
-header('Location: cart.php');
+header('Location: cart');

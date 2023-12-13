@@ -37,7 +37,7 @@ require_once(__DIR__ . '/../scripts/functions.php');
                 <i class="fa-solid fa-arrow-down-long"></i>
             </p>
             <div class="text-center">
-                <a class="btn btn-primary" href="home.php" role="button">Back to Home</a>
+                <a class="btn btn-primary" href="/" role="button">Back to Home</a>
             </div>
 
         </div>
@@ -126,7 +126,7 @@ require_once(__DIR__ . '/../scripts/functions.php');
         HTML;
         }
     } else {
-        header("Location: home.php");
+        header("Location: /");
     }
     ?>
 

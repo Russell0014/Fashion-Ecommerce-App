@@ -9,7 +9,7 @@ $currentUsername = hash('sha256', $userName . $customSalt);
 
 if ($currentUsername && isset($_COOKIE['UID'])) {
     if ($_COOKIE['UID'] !== $currentUsername) {
-        header("Location: home.php");
+        header("Location: /");
         exit();
     }
 }
@@ -178,7 +178,7 @@ $conn = null;
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                     <h5 class="text-right">Profile Image</h5>
-                    <form name="profileImageForm" action="profile.php" method="post" enctype="multipart/form-data">
+                    <form name="profileImageForm" action="profile" method="post" enctype="multipart/form-data">
                         <div class="d-flex flex-column align-items-center text-center p-3">
                             <?php
                             if (isset($userImage) && !empty($userImage)) {
@@ -202,7 +202,7 @@ $conn = null;
                     <div class="d-flex justify-content-center align-items-center mb-3">
                         <h5 class="text-center">Information</h5>
                     </div>
-                    <form name="profileForm" action="profile.php" method="post">
+                    <form name="profileForm" action="profile" method="post">
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <label for="first-name" class="labels">First Name</label>
@@ -265,7 +265,7 @@ $conn = null;
                             <br /><br /><br />
           
 
-                <form method="post" action="profile.php">
+                <form method="post" action="profile">
                                 <table>
                                     <tr>
                                         <div class="text-center">
@@ -295,7 +295,7 @@ $conn = null;
                                                         <p>Archiving your account <strong>means you'll lose access to your account and you will be logged out.</strong></p>
                                                         <p>To recover your account, you'll need to contact the site admins.</p>
 
-                                                        <form method="post" action="profile.php">
+                                                        <form method="post" action="profile">
                                                             <input type="hidden" name="userID" value="<?= $userID ?>">
                                                             <input type="hidden" name="archiveAction" value="archive">
                                                             <button class="btn btn-danger archive" type="submit" name="toggleAccountStatus">Continue</button>

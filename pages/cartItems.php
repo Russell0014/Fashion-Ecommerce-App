@@ -21,7 +21,7 @@
     <td data-th="Quantity"><?php echo $product['userSelectedQuantity'] ?></td>
     <td class="actions" data-th="">
         <div class="text-right">
-            <form method="post" action="deleteCartItem.php">
+            <form method="post" action="deleteCartItem">
                 <input type="hidden" name="productIndex" value="<?php echo $product['arrayID']; ?>">
                 <button type="submit" class="btn btn-white border-secondary bg-white btn-md mb-2">
                     <i class="fas fa-trash"></i>

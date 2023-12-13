@@ -84,7 +84,7 @@ if (isset($_POST['contactForm'])) {
             $stmt = $conn->prepare($sql);
             $stmt->execute([$userName, $userEmail, $hashedPassword]);
 
-            header("Location: login.php");
+            header("Location: login");
             exit();
         } catch (PDOException $e) {
 
@@ -153,10 +153,10 @@ if (isset($_POST['signVald'])) {
                 $hashedUsername = hash('sha256', $row['userName'] . 10);
                 $_SESSION["username"] = $row['userName'];
                 setcookie('UID', $hashedUsername, time() + 3600, '/');
-                header("Location: home.php");
+                header("Location: /");
                 exit();
             } elseif ($row && $row['isUserArchive'] == 1) {
-                $succ = 'Your account is locked. Please <a href="home.php#contact-form">contact the administrator</a>.';
+                $succ = 'Your account is locked. Please <a href="/#contact-form">contact the administrator</a>.';
             } else {
                 $succ = "Invalid email or password.";
             }
@@ -191,7 +191,7 @@ if (isset($_POST['signVald'])) {
             <div class="user signinBx">
                 <div class="imgBx"><img src="../assets/images/Login photo.png" class="mx-auto d-block" alt="" /></div>
                 <div class="formBx">
-                    <form action="login.php" id="login" class="input-field" name="signVald" method="post">
+                    <form action="login" id="login" class="input-field" name="signVald" method="post">
                         <h2>Sign In</h2>
                         <label for="emailS" class="w-100"><input type="text" id="emailS" name="emailS" placeholder="Email" /></label>
                         <div class="error" style="color: red" aria-label="<?php echo $emailSErr; ?>"><?php echo $emailSErr; ?></div>
@@ -206,7 +206,7 @@ if (isset($_POST['signVald'])) {
                             <input type="submit" name="signVald" value="Login" />
                             <p class="signup">
                                 Forgot Password ?
-                                <a href="resetPassword.php">Reset Password</a>
+                                <a href="resetPassword">Reset Password</a>
                             </p>
                             <p class="signup">
                                 Don't have an account ?
@@ -217,7 +217,7 @@ if (isset($_POST['signVald'])) {
             </div>
             <div class="user signupBx">
                 <div class="formBx">
-                    <form action="login.php" id="signup" id="up" class="input-field" name="contactForm" method="post" onsubmit="return validateForm()" novalidate>
+                    <form action="login" id="signup" id="up" class="input-field" name="contactForm" method="post" onsubmit="return validateForm()" novalidate>
                         <h2>Create an account</h2>
 
                         <input type="text" name="userName" placeholder="Username" />
