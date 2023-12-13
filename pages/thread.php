@@ -142,7 +142,7 @@ if (isset($_POST['ok'])) {
     }
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=COSC3046_2302_G2", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=id21523447_db", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("SELECT * FROM User WHERE userName = " . $uName);
@@ -169,29 +169,7 @@ if (isset($_POST['ok'])) {
     echo "<meta http-equiv='refresh' content='0'>";
 }
 
-function getCurrentUserID()
-{
-    if (isset($_SESSION['username'])) {
-        $userName = $_SESSION['username'];
-        global $conn;
-        $stmt = $conn->prepare("SELECT userID FROM User WHERE userName = '$userName'");
-        $stmt->execute();
-        $result = $stmt->fetch();
-        return $result['userID'];
-    } else {
-        return null;
-        exit();
-    }
-}
 
-function getPostUserID($threadID)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT userID FROM Thread WHERE threadID = $threadID");
-    $stmt->execute();
-    $result = $stmt->fetch();
-    return $result['userID'];
-}
 
 
 if (isset($_POST['delete'])) {
@@ -401,7 +379,7 @@ if (isset($_POST['postLike'])) {
 
                                     <?php
                                     $currentUserName = getCurrentUserID();
-                                    $postUserID = getPostUserID($row['threadID']);
+                                    $postUserID = getPostUserID($conn, $row['threadID']);
                                     ?>
 
                                     <?php if ($currentUserName === $postUserID) : ?>

@@ -12,7 +12,7 @@ require_once(__DIR__ . '/../scripts/verifyUsers.php');
 
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=id21523447_db", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -35,30 +35,9 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-//implementing delete icon on threadOpen.php
-function getCurrentUserID()
-{
-    if (isset($_SESSION['username'])) {
-        $userName = $_SESSION['username'];
-        global $conn;
-        $stmt = $conn->prepare("SELECT userID FROM User WHERE userName = '$userName'");
-        $stmt->execute();
-        $result = $stmt->fetch();
-        return $result['userID'];
-    } else {
-        return null;
-        exit();
-    }
-}
 
-function getPostUserID($threadID)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT userID FROM Thread WHERE threadID = $threadID");
-    $stmt->execute();
-    $result = $stmt->fetch();
-    return $result['userID'];
-}
+
+//implementing delete icon on threadOpen.php
 
 
 if (isset($_POST['delete'])) {
@@ -172,7 +151,7 @@ if (isset($_POST['ok'])) {
 
                         <?php
                         $currentUserName = getCurrentUserID();
-                        $postUserID = getPostUserID($row['threadID']);
+                        $postUserID = getPostUserID($conn, $row['threadID']);
                         ?>
 
                         <?php if ($currentUserName === $postUserID) : ?>
