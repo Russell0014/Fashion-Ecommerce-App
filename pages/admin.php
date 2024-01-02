@@ -3,6 +3,9 @@ require_once(__DIR__ . '/../scripts/db.php');
 require_once(__DIR__ . '/../scripts/functions.php');
 require_once(__DIR__ . '/../scripts/verifyUsers.php');
 
+ini_set('display_errors', '0');     // don't show any errors...
+ini_set('log_errors', '1');         // but do log them
+ini_set('error_log', 'logFile'); // path to server-writable log file
 
 $uName = getUsername();
 $customSalt = 10;
@@ -94,7 +97,7 @@ try {
                 echo "Error adding the product.";
             }
         } else {
-            echo "Image upload failed.";
+            
         }
     }
 } catch (PDOException $e) {
@@ -116,7 +119,9 @@ if (isset($_POST['updateThread'])) {
     $query = "UPDATE Thread SET isArchive = 1 - isArchive WHERE threadID = :threadID";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':threadID', $threadIDd, PDO::PARAM_INT);
-    $stmt->execute();
+    if ($_SESSION['username'] !== 'testadmin') {
+        $stmt->execute();
+    }
 
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -129,7 +134,9 @@ if (isset($_POST['archiveComment'])) {
     $query = "UPDATE Comment SET isArchive = 1 - isArchive WHERE commentID = :commentID";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':commentID', $commentID, PDO::PARAM_INT);
-    $stmt->execute();
+    if ($_SESSION['username'] !== 'testadmin') {
+        $stmt->execute();
+    }
 
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -140,7 +147,9 @@ if (isset($_POST['updateAdmin'])) {
     $query = "UPDATE User SET isAdmin = 1 - isAdmin WHERE userID = :userID";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':userID', $userIDd, PDO::PARAM_INT);
-    $stmt->execute();
+    if ($_SESSION['username'] !== 'testadmin') {
+        $stmt->execute();
+    }
 
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -158,7 +167,9 @@ if (isset($_POST['toggleAccountStatus'])) {
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':isUserArchive', $isUserArchive, PDO::PARAM_INT);
     $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
-    $stmt->execute();
+    if ($_SESSION['username'] !== 'testadmin') {
+        $stmt->execute();
+    }
 
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -181,7 +192,9 @@ if (isset($_POST['deleteProduct'])) {
     $query = "DELETE FROM Products WHERE productID = :productID";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':productID', $productID, PDO::PARAM_INT);
-    $stmt->execute();
+    if ($_SESSION['username'] !== 'testadmin') {
+        $stmt->execute();
+    }
 
     echo "<meta http-equiv='refresh' content='0'>";
 }
@@ -220,6 +233,10 @@ $conn = null;
                 <button class="btn btn-primary btn-header m-2" onclick="showSection('feedback-section');">Manage Questions/Feedback</button>
             </div>
         </div>
+
+        <div class="wrapper">
+
+        
 
         <!-- Display the table below -->
         <div class="container mt-4" id="thread-section">
@@ -470,7 +487,11 @@ $conn = null;
                     <input type="number" class="form-control" name="productStock" id="productStock" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Add Product</button>
+                <?php if ($_SESSION['username'] !== 'testadmin') : ?>
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                <?php else : ?>
+                    <p>Form submission is disabled for testadmin account.</p>
+                <?php endif; ?>
             </form>
         </div>
 
@@ -500,6 +521,8 @@ $conn = null;
                     ?>
                 </tbody>
             </table>
+        </div>
+
         </div>
 
 
