@@ -74,7 +74,7 @@ if (isset($_POST['ok'])) {
     $uName = '"' . $uName . '"';
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=COSC3046_2302_G2", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=id21523447_db", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $conn->prepare("SELECT * FROM User WHERE userName = " . $uName);
@@ -193,7 +193,14 @@ if (isset($_POST['ok'])) {
                 <div class="media forum-item">
 
                     <div class="user">
-                        <a><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="mr-3 rounded-circle" width="50" alt="User" /><?= $row['userName'] ?></a>
+                        <a><?php
+                            if (!empty($row["userIMG"])) {
+                                echo '<img class="mr-3 rounded-circle" src="data:image/jpeg;base64,' . base64_encode($row["userIMG"]) . '" alt="Profile Picture" width="50px">';
+                            } else {
+                                echo '<img class="mr-3 rounded-circle" src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" alt="Demo Profile" width="50px">';
+                            }
+                            ?>
+                        <?php echo $row['userName'] ?></a>
                     </div>
 
                     <div class="media-body">
