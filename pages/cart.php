@@ -47,6 +47,11 @@ function addProductToCart($id, $selectedSize, $selectedQuantity, $conn)
 
             $found = false;
 
+            // Check if $_SESSION['cart'] is set and is an array
+            if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+                // Initialize $_SESSION['cart'] as an array
+                $_SESSION['cart'] = array();
+}
             // Loop through the cart items to check for a matching product and size
             foreach ($_SESSION['cart'] as &$cartItem) {
                 if ($cartItem['productID'] === $product['productID'] && $cartItem['size'] === $selectedSize) {
