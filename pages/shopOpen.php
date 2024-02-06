@@ -92,7 +92,7 @@ foreach ($result as $row) {
             <img src="<?= $imagePath ?>" alt="<?= $row['productName'] ?>" class="img-thumbnail m-3"">
             </div>
             <div class="col-md-8 col-12">
-                <form id="productForm" action="cart.php" method="post">
+                <form id="productForm" action="cart" method="post">
                     <input type="hidden" name="productID" id="productID" value="<?php echo $product['productID'] ?>">
                     <p class="display-6 text-uppercase text-start m-2"><?php echo $product['productName'] ?></p>
                     <p class="display-6 text-uppercase text-start m-2">$<?php echo $product['productPrice'] ?></p>

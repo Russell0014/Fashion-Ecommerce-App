@@ -41,6 +41,12 @@ $routes = [
     '~^/cart$~' => function () {
         require __DIR__ . '/pages/cart.php';
     },
+    '~^/cartItems$~' => function () {
+        require __DIR__ . '/pages/cartItems.php';
+    },
+    '~^/deleteCartItem$~' => function () {
+        require __DIR__ . '/pages/deleteCartItem.php';
+    },
     '~^/thankYou$~' => function () {
         require __DIR__ . '/pages/thankYou.php';
     },
