@@ -47,6 +47,9 @@ $routes = [
     '~^/deleteCartItem$~' => function () {
         require __DIR__ . '/pages/deleteCartItem.php';
     },
+    '~^/checkout$~' => function () {
+        require __DIR__ . '/pages/checkout.php';
+    },
     '~^/thankYou$~' => function () {
         require __DIR__ . '/pages/thankYou.php';
     },
