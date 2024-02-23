@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE: id21523447_db
+      MARIADB_USER: id21523447_db
+      MARIADB_PASSWORD: ${DBpassword}
+      MARIADB_ROOT_PASSWORD: ${DBpassword}
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    
