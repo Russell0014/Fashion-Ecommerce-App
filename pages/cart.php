@@ -2,6 +2,10 @@
 require_once(__DIR__ . '/../scripts/db.php');
 require_once(__DIR__ . '/../scripts/functions.php');
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 try {
     $conn = new PDO("mysql:host=$servername;dbname=id21523447_db", $username, $password);
     // set the PDO error mode to exception

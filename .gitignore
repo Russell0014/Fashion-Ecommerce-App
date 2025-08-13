@@ -10,9 +10,6 @@
 # Ignore .DS_Store files on macOS
 .DS_Store
 
-#Ignore the db folder
-/db
-
 # Ignore log files
 /log/*.log
 
